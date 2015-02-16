@@ -113,8 +113,9 @@ if [ ! -z $mkboot_from_dir ]; then
     fi
     [ -z $dtb_size ] && dtb_size=0
     if [ -d $ramdisk ]; then
-        #cd $ramdisk
-        #find . | cpio -R 0:0 -H newc -o 2>/dev/null | gzip > $unpacked_dir/new_ramdisk.gz
+        cd $ramdisk
+        find . | cpio -R 0:0 -H newc -o 2>/dev/null | gzip > ../new_ramdisk.gz
+	cd ..
         $mkbootfs $ramdisk | gzip > new_ramdisk.gz
         ramdisk=new_ramdisk.gz
         ramdisk_size=$(stat -c "%s" $ramdisk)
