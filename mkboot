@@ -116,7 +116,7 @@ if [ ! -z $mkboot_from_dir ]; then
         cd $ramdisk
         find . | cpio -R 0:0 -H newc -o 2>/dev/null | gzip > ../new_ramdisk.gz
 	cd ..
-        $mkbootfs $ramdisk | gzip > new_ramdisk.gz
+      #  $mkbootfs $ramdisk | gzip > new_ramdisk.gz
         ramdisk=new_ramdisk.gz
         ramdisk_size=$(stat -c "%s" $ramdisk)
     fi
